@@ -1,0 +1,24 @@
+---
+# Deploy LAMP stack using ansible
+- hosts: nodes
+  remote_user: root
+  tasks:
+    - name: Install lamp stack
+      apt: name={{ item }} state=present update_cache=yes
+      with_items:
+        - apache2
+        - mysql-server
+        - php7.0
+        - php7.0-mysql
+
+    - name: Start services
+      service: name={{ item }} state=started enabled=yes
+      with_items:
+        - apache2
+        - mysql
+
+    - name: deploy index.html
+      copy:
+        src: /tmp/index.html
+        dest: /var/www/html/index.html
+        mode: 0664
