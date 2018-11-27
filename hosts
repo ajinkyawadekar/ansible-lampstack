@@ -1,5 +1,2 @@
-[localhost]
-#127.0.0.1
-
 [nodes]
-node1 ansible_host=147.75.72.151
+node1 ansible_host=<Ip Address>
