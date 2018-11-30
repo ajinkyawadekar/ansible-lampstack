@@ -1,6 +1,7 @@
 ---
 # Deploy LAMP stack using ansible
-- hosts: nodes
+# By default localhost is set up, for any other host make changes to the hosts file
+- hosts: localhost
   remote_user: root
   tasks:
     - name: Install lamp stack
@@ -19,6 +20,6 @@
 
     - name: deploy index.html
       copy:
-        src: /tmp/index.html
+        src: files/index.html
         dest: /var/www/html/index.html
         mode: 0664
